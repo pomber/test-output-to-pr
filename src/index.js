@@ -50,7 +50,7 @@ function postImages(cb) {
 
 function run(args) {
   // const test = execa("npm", ["run", test], { stdio: "inherit" });
-  return execa("npm", ["run", ...args], { stdio: "inherit" })
+  return execa("yarn", [...args], { stdio: "inherit" })
     .then(x => console.log("then: ", x))
     .catch(e => {
       console.log("catch: ", e, e.code);
@@ -59,6 +59,12 @@ function run(args) {
       });
     });
 }
+
+/*
+TODO:
+- test may fail without failing snapshots: dont post comment
+- if we are not in travis and/or not triggered from a pr: do nothing
+ */
 
 const args = process.argv.slice(2);
 run(args);
