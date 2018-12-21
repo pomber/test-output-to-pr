@@ -33,6 +33,10 @@ function postImages(cb) {
     `[test-output-to-pr] Posting images from ${path} to ${repo}#${pr}`
   );
   glob(path, (err, files) => {
+    if (files.length === 0) {
+      cb();
+      return;
+    }
     imgur
       .uploadImages(files, "File")
       .then(uploads => uploads.map(upload => upload.link))
@@ -54,6 +58,10 @@ function run(args) {
     .then(x => console.log("then: ", x))
     .catch(e => {
       console.log("catch: ", e, e.code);
+      if (!repo || !pr) {
+        process.exit(e.code);
+      }
+
       postImages(() => {
         process.exit(e.code);
       });
@@ -62,8 +70,7 @@ function run(args) {
 
 /*
 TODO:
-- test may fail without failing snapshots: dont post comment
-- if we are not in travis and/or not triggered from a pr: do nothing
+- warn if there is no GH_TOKEN, then do nothing
  */
 
 const args = process.argv.slice(2);
