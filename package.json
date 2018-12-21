@@ -9,6 +9,7 @@
   },
   "version": "0.0.0-development",
   "scripts": {
+    "test": "true",
     "semantic-release": "semantic-release"
   },
   "repository": {
