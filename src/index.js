@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fetch = require("node-fetch");
 const imgur = require("imgur");
 const glob = require("glob");
