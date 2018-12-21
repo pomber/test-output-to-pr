@@ -1,9 +1,21 @@
 {
+  "name": "test-output-to-pr",
   "dependencies": {
     "dotenv": "^6.2.0",
     "execa": "^1.0.0",
     "glob": "^7.1.3",
     "imgur": "^0.3.1",
     "node-fetch": "^2.3.0"
+  },
+  "version": "0.0.0-development",
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pomber/test-output-to-pr.git"
+  },
+  "devDependencies": {
+    "semantic-release": "^15.13.1"
   }
 }
